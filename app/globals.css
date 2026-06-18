@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------
+   HelveticaNowDisplay
+   Commercial font — not auto-loaded. Drop the licensed files into
+   /public/fonts/ with these exact names and they'll pick up here:
+     HelveticaNowDisplay-Regular.woff2  (400)
+     HelveticaNowDisplay-Medium.woff2   (500)
+     HelveticaNowDisplay-Bold.woff2     (700)
+   Until then, the fallback stack (Helvetica Neue / Arial) renders.
+------------------------------------------------------------------ */
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  src: url("/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  src: url("/fonts/HelveticaNowDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  src: url("/fonts/HelveticaNowDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* ---- Thames Luxury Charters palette ---- */
+  --color-ink: #0a1422;
+  --color-navy: #122036;
+  --color-navy-light: #1c2e4c;
+  --color-brass: #c8a24a;
+  --color-brass-soft: #e6cd86;
+  --color-ivory: #f4efe2;
+  --color-fog: #8c98ad;
+  --color-ember: #8c3b2e;
+
+  /* ---- type: HelveticaNowDisplay across the board ---- */
+  --font-display: "HelveticaNowDisplay", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "HelveticaNowDisplay", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --animate-tide: tide 8s ease-in-out infinite;
+  --animate-drift: drift 22s linear infinite;
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes tide {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html, body {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: var(--color-navy-light); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brass); }
+
+.text-balance { text-wrap: balance; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
