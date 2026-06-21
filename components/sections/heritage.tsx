@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
 export function Heritage() {
   return (
-    <section className="bg-navy px-6 py-24">
+    <section className="relative overflow-hidden bg-navy px-6 py-24">
+      <SectionSpotlight />
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-[200px_1fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

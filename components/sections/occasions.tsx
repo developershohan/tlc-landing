@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
 const OCCASIONS = [
   { title: "Thames Parties",        desc: "Birthdays, anniversaries and private celebrations on the water." },
@@ -12,7 +13,8 @@ const OCCASIONS = [
 
 export function Occasions() {
   return (
-    <section id="occasions" className="bg-navy px-6 py-28">
+    <section id="occasions" className="relative overflow-hidden bg-navy px-6 py-28">
+      <SectionSpotlight />
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">Occasions</p>
         <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,3.4vw,2.9rem)] font-medium text-ivory text-balance">

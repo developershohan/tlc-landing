@@ -93,7 +93,7 @@ export function SocialMarquee() {
             if (resumeTimer.current !== null) clearTimeout(resumeTimer.current);
           }}
           onDragEnd={() => {
-            resumeTimer.current = setTimeout(() => {
+            resumeTimer.current = window.setTimeout(() => {
               isDragging.current = false;
             }, 1500);
           }}

@@ -23,13 +23,13 @@ export function Hero() {
   const words    = useMemo(() => OCCASIONS, []);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Mouse-parallax for the text block — lazy spring, max ±5px
+  // Mouse parallax — text drifts opposite cursor
   const mouseX  = useMotionValue(0.5);
   const mouseY  = useMotionValue(0.5);
-  const mxS     = useSpring(mouseX, { stiffness: 55, damping: 28 });
-  const myS     = useSpring(mouseY, { stiffness: 55, damping: 28 });
-  const prlx    = useTransform(mxS, [0, 1], [5, -5]);
-  const prly    = useTransform(myS, [0, 1], [3, -3]);
+  const mxS     = useSpring(mouseX, { stiffness: 100, damping: 28 });
+  const myS     = useSpring(mouseY, { stiffness: 100, damping: 28 });
+  const prlx    = useTransform(mxS, [0, 1], [22, -22]);
+  const prly    = useTransform(myS, [0, 1], [14, -14]);
 
   useEffect(() => {
     const id = setInterval(() => setIndex((i) => (i + 1) % words.length), 2400);

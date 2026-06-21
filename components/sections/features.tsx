@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
   Users, UtensilsCrossed, Music4, Anchor, MapPin, Wine, ArrowUpRight,
 } from "lucide-react";
+import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
 const FEATURES = [
   { icon: Users,           title: "Up to 300 guests",       body: "From intimate dinners to full-scale celebrations across the fleet." },
@@ -17,6 +18,7 @@ const FEATURES = [
 export function Features() {
   return (
     <section className="relative overflow-hidden bg-navy px-6 py-28">
+      <SectionSpotlight />
       <div className="absolute right-[-10%] top-1/2 hidden w-[55%] -translate-y-1/2 text-ink/40 lg:block" aria-hidden>
         <svg viewBox="0 0 600 200" fill="currentColor" className="w-full">
           <path d="M20 140 L580 140 L510 175 L90 175 Z" />

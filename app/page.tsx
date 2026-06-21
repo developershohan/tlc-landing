@@ -11,6 +11,7 @@ import { FleetGallery } from "@/components/sections/fleet-gallery";
 import { Occasions } from "@/components/sections/occasions";
 import { WinterSale } from "@/components/sections/winter-sale";
 import { SocialMarquee } from "@/components/sections/social-marquee";
+import { CtaBanner } from "@/components/sections/cta-banner";
 import { EnquireCta } from "@/components/sections/enquire-cta";
 import { Footer } from "@/components/footer/footer";
 
@@ -31,6 +32,7 @@ export default function Home() {
         <Occasions />
         <WinterSale />
         <SocialMarquee />
+        <CtaBanner />
         <EnquireCta />
       </main>
       <Footer />
