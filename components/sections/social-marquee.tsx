@@ -15,8 +15,8 @@ const SHOTS = [
 ];
 
 // All cards at same angle — uniform diagonal band look
-const CARD_W        = 280;
-const CARD_H        = 360;
+const CARD_W        = 380;
+const CARD_H        = 460;
 const GAP           = 28;
 const SCROLL_SPEED  = 42; // px per second
 
@@ -97,7 +97,7 @@ export function SocialMarquee() {
               isDragging.current = false;
             }, 1500);
           }}
-          className="flex w-max select-none items-center -rotate-15 -mt-20 pb-2"
+          className="flex w-max select-none items-center -rotate-10 -mt-40 pb-2"
         >
           {SHOTS.map((shot, i) => (
             <motion.div
@@ -121,7 +121,7 @@ export function SocialMarquee() {
       </div>
 
       {/* Below-strip row: drag hint left, watermark text right — fully visible, no image overlap */}
-      <div className="relative z-10 mt-20 w[full] px-8 flex items-end justify-end gap-4">
+      <div className="relative z-10 mt-30 w[full] px-8 flex items-end justify-end gap-4">
 
         <p
           aria-hidden

@@ -36,6 +36,14 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes ember-rise {
+  0%   { transform: translateY(0)     translateX(0);    opacity: 0;    }
+  7%   {                                                opacity: 0.28; }
+  48%  { transform: translateY(-52px) translateX(6px);  opacity: 0.13; }
+  90%  {                                                opacity: 0.04; }
+  100% { transform: translateY(-95px) translateX(-4px); opacity: 0;    }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;

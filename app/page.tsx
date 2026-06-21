@@ -1,3 +1,4 @@
+import { CursorDot } from "@/components/cursor/cursor-dot";
 import { FloatingNav } from "@/components/nav/floating-nav";
 import { TideProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/hero/hero";
@@ -16,6 +17,7 @@ import { Footer } from "@/components/footer/footer";
 export default function Home() {
   return (
     <>
+      <CursorDot />
       <TideProgress />
       <FloatingNav />
       <main>

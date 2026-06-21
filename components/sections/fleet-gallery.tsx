@@ -144,7 +144,7 @@ export function FleetGallery() {
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute right-4 top-4 z-10 rounded-full border border-brass/30 p-2 text-black cursor-pointer bg-amber-50"
+                className="absolute right-4 top-4 z-10 rounded-full border border-brass/30 bg-navy p-2 text-ivory cursor-pointer hover:border-brass transition-colors"
                 aria-label="Close"
               >
                 <X size={16} />
