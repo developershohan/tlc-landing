@@ -2,8 +2,8 @@ import { FloatingNav } from "@/components/nav/floating-nav";
 import { TideProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/hero/hero";
 import { ClipReveal } from "@/components/sections/clip-reveal";
-import { ParadigmShift } from "@/components/sections/paradigm-shift";
 import { Heritage } from "@/components/sections/heritage";
+import { ContainerScrollSection } from "@/components/sections/container-scroll-section";
 import { ExperienceSpread } from "@/components/sections/experience-spread";
 import { Features } from "@/components/sections/features";
 import { FleetGallery } from "@/components/sections/fleet-gallery";
@@ -21,8 +21,8 @@ export default function Home() {
       <main>
         <Hero />
         <ClipReveal />
-        <ParadigmShift />
         <Heritage />
+        <ContainerScrollSection />
         <ExperienceSpread />
         <Features />
         <FleetGallery />

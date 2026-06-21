@@ -1,121 +1,157 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-const PHOTOS = [
-  { hint: "/images/-008.jpg", side: "left" },
-  { hint: "/images/-009.jpg", side: "center" },
-  { hint: "/images/-010.jpg", side: "right" },
-];
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function ExperienceSpread() {
-  const root = useRef<HTMLDivElement>(null);
-  const intro = useRef<HTMLDivElement>(null);
-  const left = useRef<HTMLDivElement>(null);
-  const right = useRef<HTMLDivElement>(null);
-  const caption = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const [spread, setSpread] = useState(400);
 
   useEffect(() => {
-    if (!root.current) return;
+    const update = () => {
+      setSpread(Math.min(400, window.innerWidth * 0.28));
+    };
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top top",
-          end: "+=1800",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
+    update();
+    window.addEventListener("resize", update);
 
-      tl.to(intro.current, { opacity: 0, y: -40, duration: 0.6 }, 0)
-        .fromTo(
-          left.current,
-          { xPercent: 0 },
-          { xPercent: -62, ease: "power1.out", duration: 1.4 },
-          0,
-        )
-        .fromTo(
-          right.current,
-          { xPercent: 0 },
-          { xPercent: 62, ease: "power1.out", duration: 1.4 },
-          0,
-        )
-        .fromTo(
-          caption.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          0.9,
-        );
-    }, root);
-
-    return () => ctx.revert();
+    return () => window.removeEventListener("resize", update);
   }, []);
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  /*
+    Important:
+    Added the final `1` point in every transform.
+    This makes all content/images stay visible after the animation finishes.
+  */
+
+  // Side images emerge from behind center and stay there
+  const leftX = useTransform(
+    scrollYProgress,
+    [0.08, 0.52, 1],
+    [0, -spread, -spread]
+  );
+
+  const rightX = useTransform(
+    scrollYProgress,
+    [0.08, 0.52, 1],
+    [0, spread, spread]
+  );
+
+  const sidesY = useTransform(
+    scrollYProgress,
+    [0.08, 0.52, 1],
+    [0, -52, -52]
+  );
+
+  const sidesOp = useTransform(
+    scrollYProgress,
+    [0.06, 0.22, 1],
+    [0, 1, 1]
+  );
+
+  // Top headline fades in and stays visible
+  const topOp = useTransform(
+    scrollYProgress,
+    [0.5, 0.68, 1],
+    [0, 1, 1]
+  );
+
+  const topY = useTransform(
+    scrollYProgress,
+    [0.5, 0.68, 1],
+    [-30, 0, 0]
+  );
+
+  // Bottom caption fades in and stays visible
+  const botOp = useTransform(
+    scrollYProgress,
+    [0.58, 0.76, 1],
+    [0, 1, 1]
+  );
+
+  const botY = useTransform(
+    scrollYProgress,
+    [0.58, 0.76, 1],
+    [28, 0, 0]
+  );
+
   return (
-    <section
-      ref={root}
-      className="relative flex h-screen items-center justify-center overflow-hidden bg-ink"
+    <div
+      ref={ref}
+      style={{ height: "calc(1800px + 100vh)" }}
+      className="relative bg-ink"
     >
-      <div
-        ref={intro}
-        className="absolute z-20 px-6 text-center"
-      >
-        <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">
-          &mdash; the experience &mdash;
-        </p>
-        <h2 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight text-ivory">
-          A luxury charter experience
-        </h2>
-      </div>
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Top headline */}
+        <motion.div
+          style={{ opacity: topOp, y: topY }}
+          className="absolute top-[09%] z-30 w-full px-8 text-center pointer-events-none"
+        >
+          <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">
+            &mdash; the experience &mdash;
+          </p>
 
-      <div className="relative flex w-full max-w-2xl items-center justify-center px-6">
-        <Photo ref={left} hint={PHOTOS[0].hint} z={10} />
-        <Photo hint={PHOTOS[1].hint} z={20} center />
-        <Photo ref={right} hint={PHOTOS[2].hint} z={10} />
-      </div>
+          <h2 className="mt-3 font-display text-[clamp(1.8rem,4vw,3.5rem)] tracking-tight text-ivory">
+            A luxury charter experience
+          </h2>
+        </motion.div>
 
-      <p
-        ref={caption}
-        className="absolute bottom-16 z-20 max-w-md px-6 text-center text-sm leading-relaxed text-fog"
-      >
-        From the first arrival drink to the last dance under the lights, every
-        detail is handled by a team that has hosted the Thames since 1993.
-      </p>
-    </section>
+        {/* Image trio */}
+        <div
+          className="relative flex items-center justify-center"
+          style={{ height: "65vh", width: "100%" }}
+        >
+          {/* Left wing */}
+          <motion.div
+            style={{ x: leftX, y: sidesY, opacity: sidesOp }}
+            className="absolute w-[36vw] sm:w-[26vw] max-w-[340px] h-[46vh] sm:h-[54vh] overflow-hidden rounded-xl border border-brass/15 shadow-[0_28px_70px_-18px_rgba(0,0,0,0.75)]"
+          >
+            <img
+              src="/images/-008.jpg"
+              alt="On board dining"
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </motion.div>
+
+          {/* Right wing */}
+          <motion.div
+            style={{ x: rightX, y: sidesY, opacity: sidesOp }}
+            className="absolute w-[36vw] sm:w-[26vw] max-w-[340px] h-[46vh] sm:h-[54vh] overflow-hidden rounded-xl border border-brass/15 shadow-[0_28px_70px_-18px_rgba(0,0,0,0.75)]"
+          >
+            <img
+              src="/images/-010.jpg"
+              alt="Evening on the river"
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </motion.div>
+
+          {/* Center image */}
+          <div className="relative z-10 w-[48vw] sm:w-[32vw] max-w-[420px] h-[54vh] sm:h-[62vh] overflow-hidden rounded-2xl border border-brass/25 shadow-[0_44px_110px_-20px_rgba(0,0,0,0.9)]">
+            <img
+              src="/images/-009.jpg"
+              alt="Thames charter experience"
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </div>
+        </div>
+
+        {/* Bottom caption */}
+        <motion.p
+          style={{ opacity: botOp, y: botY }}
+          className="absolute bottom-[9%] z-30 max-w-sm px-6 text-center text-sm leading-relaxed text-fog"
+        >
+          From the first arrival drink to the last dance under the lights —
+          every detail handled by a crew that has hosted the Thames since 1993.
+        </motion.p>
+      </div>
+    </div>
   );
 }
-
-const Photo = ({
-  ref,
-  hint,
-  z,
-  center,
-}: {
-  ref?: React.Ref<HTMLDivElement>;
-  hint: string;
-  z: number;
-  center?: boolean;
-}) => (
-  <div
-    ref={ref}
-    style={{ zIndex: z }}
-    className={`${
-      center ? "relative" : "absolute"
-    } aspect-[3/4] w-56 overflow-hidden rounded-2xl border border-brass/20 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)] sm:w-72`}
-  >
-    <img
-      src={hint}
-      alt="On board experience"
-      className="h-full w-full object-cover"
-    />
-  </div>
-);

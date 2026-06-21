@@ -1,36 +1,5 @@
 @import "tailwindcss";
 
-/* ----------------------------------------------------------------
-   HelveticaNowDisplay
-   Commercial font — not auto-loaded. Drop the licensed files into
-   /public/fonts/ with these exact names and they'll pick up here:
-     HelveticaNowDisplay-Regular.woff2  (400)
-     HelveticaNowDisplay-Medium.woff2   (500)
-     HelveticaNowDisplay-Bold.woff2     (700)
-   Until then, the fallback stack (Helvetica Neue / Arial) renders.
------------------------------------------------------------------- */
-@font-face {
-  font-family: "HelveticaNowDisplay";
-  src: url("/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "HelveticaNowDisplay";
-  src: url("/fonts/HelveticaNowDisplay-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "HelveticaNowDisplay";
-  src: url("/fonts/HelveticaNowDisplay-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   /* ---- Thames Luxury Charters palette ---- */
   --color-ink: #0a1422;
@@ -42,9 +11,9 @@
   --color-fog: #8c98ad;
   --color-ember: #8c3b2e;
 
-  /* ---- type: HelveticaNowDisplay across the board ---- */
-  --font-display: "HelveticaNowDisplay", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "HelveticaNowDisplay", "Helvetica Neue", Arial, sans-serif;
+  /* ---- type: Marcellus (elegant oldstyle serif) via next/font/google ---- */
+  --font-display: var(--font-marcellus), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-marcellus), Georgia, "Times New Roman", serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   --animate-tide: tide 8s ease-in-out infinite;

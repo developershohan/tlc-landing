@@ -2,13 +2,15 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// ponytail: registered here so every GSAP component inherits it
+gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReduced) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -16,15 +18,14 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       smoothWheel: true,
     });
 
-    let frame = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      frame = requestAnimationFrame(raf);
-    };
-    frame = requestAnimationFrame(raf);
+    // Wire Lenis → GSAP so pins, scrub, and ScrollTrigger share one scroll source
+    lenis.on("scroll", ScrollTrigger.update);
+    const rafFn = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(rafFn);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(frame);
+      gsap.ticker.remove(rafFn);
       lenis.destroy();
     };
   }, []);

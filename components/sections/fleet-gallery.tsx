@@ -103,7 +103,7 @@ export function FleetGallery() {
               }}
               whileHover={{ scale: 1.015 }}
               className={cn(
-                "group relative min-h-[180px] overflow-hidden rounded-2xl border border-brass/15 bg-navy text-left",
+                "group relative min-h-[180px] overflow-hidden rounded-2xl border border-brass/15 bg-navy text-left cursor-pointer",
                 v.span,
               )}
             >
@@ -144,7 +144,7 @@ export function FleetGallery() {
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute right-4 top-4 z-10 rounded-full border border-brass/30 p-2 text-brass-soft"
+                className="absolute right-4 top-4 z-10 rounded-full border border-brass/30 p-2 text-black cursor-pointer bg-amber-50"
                 aria-label="Close"
               >
                 <X size={16} />

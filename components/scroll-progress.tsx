@@ -1,30 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useScroll, useSpring, motion } from "framer-motion";
 
 export function TideProgress() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
-      const max = scrollHeight - clientHeight;
-      setProgress(max > 0 ? scrollTop / max : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
-    <div
-      aria-hidden
-      className="fixed inset-x-0 top-0 z-[80] h-[3px] w-full bg-ivory/5"
-    >
-      <div
-        className="h-full origin-left bg-gradient-to-r from-brass-soft to-brass transition-[width] duration-150"
-        style={{ width: `${progress * 100}%` }}
+    <div aria-hidden className="fixed inset-x-0 top-0 z-80 h-0.75 w-full bg-ivory/5">
+      <motion.div
+        className="h-full origin-left bg-linear-to-r from-brass-soft to-brass"
+        style={{ scaleX }}
       />
     </div>
   );
