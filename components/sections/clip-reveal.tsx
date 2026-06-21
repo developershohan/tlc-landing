@@ -42,10 +42,12 @@ function CenterFrame() {
 
   return (
     <motion.div
+      suppressHydrationWarning
       style={{ clipPath, opacity }}
       className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden"
     >
       <motion.img
+        suppressHydrationWarning
         src="/images/-001.jpg"
         alt="The Thames at dusk seen from on deck"
         style={{ height: size, width: size, objectFit: "cover" }}

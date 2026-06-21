@@ -7,10 +7,11 @@ import { Anchor, Ship, Sparkles, PhoneCall, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { name: "Fleet", href: "#fleet", icon: Ship },
-  { name: "Occasions", href: "#occasions", icon: Sparkles },
-  { name: "Winter Sale", href: "#winter-sale", icon: Anchor },
-  { name: "Enquire", href: "#enquire", icon: PhoneCall },
+  { name: "The Fleet",  href: "#fleet",       icon: Ship     },
+  { name: "Occasions",  href: "#occasions",   icon: Sparkles },
+  { name: "Offers",     href: "#winter-sale", icon: Anchor   },
+  { name: "Reviews",    href: "#reviews",     icon: Sparkles },
+  { name: "Enquire",    href: "#enquire",     icon: PhoneCall },
 ];
 
 export function FloatingNav() {
@@ -19,7 +20,7 @@ export function FloatingNav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -58,8 +59,8 @@ export function FloatingNav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 flex justify-center px-4 transition-all duration-500",
-          scrolled ? "pt-3" : "pt-6",
+          "fixed inset-x-0 z-50 flex justify-center px-4 transition-all duration-500",
+          scrolled ? "top-0 pt-3" : "top-12 pt-4",
         )}
       >
         <div className="flex w-full max-w-6xl items-center justify-between">
@@ -69,7 +70,7 @@ export function FloatingNav() {
             className="flex items-center gap-2 rounded-full border border-brass/20 bg-ink/70 px-4 py-2 backdrop-blur-lg"
           >
             <img src="/images/logo.png" alt="Thames Luxury Charters" className="h-8 w-auto" />
-            <span className="hidden sm:inline font-display text-sm tracking-[0.18em] text-ivory">
+            <span className="hidden lg:inline font-display text-sm tracking-[0.18em] text-ivory">
               THAMES LUXURY CHARTERS
             </span>
           </a>
@@ -84,7 +85,7 @@ export function FloatingNav() {
                   href={item.href}
                   onClick={() => setActive(item.href)}
                   className={cn(
-                    "relative rounded-full px-5 py-2 text-sm font-medium text-ivory/70 transition-colors hover:text-brass-soft",
+                    "relative rounded-full px-3 py-2 text-sm font-medium text-ivory/70 transition-colors hover:text-brass-soft lg:px-5",
                     isActive && "text-ink",
                   )}
                 >
@@ -103,12 +104,13 @@ export function FloatingNav() {
             })}
           </nav>
 
-          {/* Desktop phone */}
+          {/* Phone — icon only on tablet, full on desktop */}
           <a
             href="tel:02073577751"
-            className="hidden items-center gap-2 rounded-full border border-brass/40 bg-ink/70 px-4 py-2 text-sm font-medium text-brass-soft backdrop-blur-lg sm:flex md:flex"
+            className="hidden items-center gap-2 rounded-full border border-brass/40 bg-ink/70 px-3 py-2 text-sm font-medium text-brass-soft backdrop-blur-lg md:flex lg:px-4"
           >
-            020 7357 7751
+            <PhoneCall size={15} className="shrink-0" />
+            <span className="hidden lg:inline">020 7357 7751</span>
           </a>
 
           {/* Mobile hamburger */}

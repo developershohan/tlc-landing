@@ -17,7 +17,7 @@ const FEATURES = [
 
 export function Features() {
   return (
-    <section className="relative overflow-hidden bg-navy px-6 py-28">
+    <section className="relative overflow-hidden bg-navy px-6 py-24">
       <SectionSpotlight />
       <div className="absolute right-[-10%] top-1/2 hidden w-[55%] -translate-y-1/2 text-ink/40 lg:block" aria-hidden>
         <svg viewBox="0 0 600 200" fill="currentColor" className="w-full">
@@ -58,7 +58,7 @@ export function Features() {
 
                 <h3 className="mt-6 font-display text-lg font-medium text-ivory">{f.title}</h3>
                 <p
-                  className="mt-2 text-sm leading-relaxed text-fog"
+                  className="mt-2 text-base leading-relaxed text-fog"
                   dangerouslySetInnerHTML={{ __html: f.body }}
                 />
 

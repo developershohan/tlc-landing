@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { PhoneCall } from "lucide-react";
 import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
-const WORDS = "Your perfect event, on the river".split(" ");
+const WORDS = "Begin your journey on the Thames".split(" ");
 
 export function CtaBanner() {
   return (
@@ -47,9 +47,9 @@ export function CtaBanner() {
           className="mx-auto mt-7 h-px max-w-45 bg-linear-to-r from-transparent via-brass/40 to-transparent"
         />
 
-        <p className="mt-6 text-fog">
-          Tell us your date, your numbers, and your vision &mdash; we&rsquo;ll
-          take care of the rest.
+        <p className="mt-6 text-base text-fog">
+          Tell us about your occasion and our charter team will craft a tailored
+          proposal — usually within one working day. No obligation, just possibilities.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -65,19 +65,20 @@ export function CtaBanner() {
             <span className="relative z-10">Enquire now</span>
           </a>
 
-          {/* Secondary — wobble icon */}
+          {/* Secondary — sweep + wobble icon */}
           <a
             href="tel:02073577751"
-            className="group inline-flex items-center gap-2 rounded-full border border-brass/40 px-8 py-4 text-sm font-medium text-ivory transition-colors hover:border-brass hover:text-brass-soft"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-brass/40 px-8 py-4 text-sm font-medium"
           >
+            <span aria-hidden className="absolute inset-0 translate-x-[-105%] bg-brass/10 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0" />
             <motion.span
               whileHover={{ rotate: [0, -14, 10, 0] }}
               transition={{ duration: 0.4 }}
-              className="inline-block"
+              className="relative z-10 inline-block text-ivory"
             >
               <PhoneCall size={16} />
             </motion.span>
-            020 7357 7751
+            <span className="relative z-10 text-ivory transition-colors group-hover:text-brass-soft">020 7357 7751</span>
           </a>
         </div>
       </div>

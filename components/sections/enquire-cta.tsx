@@ -3,21 +3,20 @@
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
-import { ChevronDown } from "lucide-react";
 
 import { EmberParticles } from "@/components/effects/ember-particles";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CustomSelect } from "@/components/ui/custom-select";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
 
 type Status = "idle" | "submitting" | "success" | "error";
-
-// Shared input/select class
-const field =
-  "w-full rounded-lg border border-brass/15 bg-ink/50 px-4 py-2.5 text-sm text-ivory placeholder-fog/40 outline-none transition-colors duration-200 focus:border-brass/50 focus:ring-1 focus:ring-brass/20";
 
 export function EnquireCta() {
   const [status, setStatus] = useState<Status>("idle");
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Magnetic submit button
   const magX = useMotionValue(0);
   const magY = useMotionValue(0);
   const smx  = useSpring(magX, { stiffness: 240, damping: 18 });
@@ -56,7 +55,7 @@ export function EnquireCta() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
 
-          {/* ── Left: intro ── */}
+          {/* ── Left ── */}
           <div className="lg:pt-2">
             <motion.p
               initial={{ opacity: 0, y: 14 }}
@@ -82,7 +81,7 @@ export function EnquireCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.16 }}
-              className="mt-5 text-fog leading-relaxed"
+              className="mt-5 text-base text-fog leading-relaxed"
             >
               Tell us about your occasion and our charter team will craft a
               tailored proposal — usually within one working day. No obligation,
@@ -98,19 +97,13 @@ export function EnquireCta() {
             >
               <li className="flex items-center gap-3 text-sm text-ivory/80">
                 <Phone size={16} className="text-brass shrink-0" strokeWidth={1.6} />
-                <a
-                  href="tel:+442073577751"
-                  className="transition-colors hover:text-brass-soft"
-                >
+                <a href="tel:+442073577751" className="transition-colors hover:text-brass-soft">
                   +44 (0)20 7357 7751
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-ivory/80">
                 <Mail size={16} className="text-brass shrink-0" strokeWidth={1.6} />
-                <a
-                  href="mailto:charters@thamesluxurycharters.co.uk"
-                  className="transition-colors hover:text-brass-soft"
-                >
+                <a href="mailto:charters@thamesluxurycharters.co.uk" className="transition-colors hover:text-brass-soft">
                   charters@thamesluxurycharters.co.uk
                 </a>
               </li>
@@ -122,7 +115,6 @@ export function EnquireCta() {
               </li>
             </motion.ul>
 
-            {/* Decorative rule */}
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -159,89 +151,124 @@ export function EnquireCta() {
                 className="space-y-5 rounded-2xl border border-brass/20 bg-navy p-8"
               >
                 {/* Full name */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="font-mono text-[10px] uppercase tracking-widest text-fog">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="name">
                     Full name <span className="text-brass">*</span>
-                  </label>
-                  <input type="text" id="name" name="name" autoComplete="name" required className={field} />
+                  </Label>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Emma Crown"
+                    required
+                  />
                 </div>
+
+                <Separator />
 
                 {/* Email + Phone */}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-widest text-fog">
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="email">
                       Email <span className="text-brass">*</span>
-                    </label>
-                    <input type="email" id="email" name="email" autoComplete="email" required className={field} />
+                    </Label>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="email"
+                      autoComplete="email"
+                      placeholder="emma@company.com"
+                      required
+                    />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="phone" className="font-mono text-[10px] uppercase tracking-widest text-fog">
-                      Phone
-                    </label>
-                    <input type="tel" id="phone" name="phone" autoComplete="tel" className={field} />
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="phone">Phone</Label>
+                    <Input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      autoComplete="tel"
+                      placeholder="+44 7700 900000"
+                    />
                   </div>
                 </div>
+
+                <Separator />
 
                 {/* Occasion + Boat */}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="occasion" className="font-mono text-[10px] uppercase tracking-widest text-fog">
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="occasion">
                       Occasion <span className="text-brass">*</span>
-                    </label>
-                    <div className="relative">
-                      <select id="occasion" name="occasion" required defaultValue="" className={`${field} appearance-none pr-8`}>
-                        <option value="" disabled>Select an occasion</option>
-                        <option>Private Party</option>
-                        <option>Wedding</option>
-                        <option>Corporate Event</option>
-                        <option>Birthday / Anniversary</option>
-                        <option>Christmas / Festive</option>
-                        <option>Other</option>
-                      </select>
-                      <ChevronDown size={13} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-fog" />
-                    </div>
+                    </Label>
+                    <CustomSelect
+                      id="occasion"
+                      name="occasion"
+                      required
+                      placeholder="Select an occasion"
+                      options={[
+                        { value: "Private Party",        label: "Private Party" },
+                        { value: "Wedding",              label: "Wedding" },
+                        { value: "Corporate Event",      label: "Corporate Event" },
+                        { value: "Birthday / Anniversary", label: "Birthday / Anniversary" },
+                        { value: "Christmas / Festive",  label: "Christmas / Festive" },
+                        { value: "Other",                label: "Other" },
+                      ]}
+                    />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="boat" className="font-mono text-[10px] uppercase tracking-widest text-fog">
-                      Preferred boat
-                    </label>
-                    <div className="relative">
-                      <select id="boat" name="boat" defaultValue="" className={`${field} appearance-none pr-8`}>
-                        <option value="">No preference</option>
-                        <option>The Dixie Queen</option>
-                        <option>The Elizabethan</option>
-                        <option>The Edwardian</option>
-                      </select>
-                      <ChevronDown size={13} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-fog" />
-                    </div>
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="boat">Preferred boat</Label>
+                    <CustomSelect
+                      id="boat"
+                      name="boat"
+                      defaultValue="No preference"
+                      options={[
+                        { value: "No preference",    label: "No preference" },
+                        { value: "The Dixie Queen",  label: "The Dixie Queen" },
+                        { value: "The Elizabethan",  label: "The Elizabethan" },
+                        { value: "The Edwardian",    label: "The Edwardian" },
+                      ]}
+                    />
                   </div>
                 </div>
+
+                <Separator />
 
                 {/* Date + Guests */}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="date" className="font-mono text-[10px] uppercase tracking-widest text-fog">
-                      Preferred date
-                    </label>
-                    <input type="date" id="date" name="date" className={field} />
+                  <div className="flex min-w-0 flex-col gap-2">
+                    <Label htmlFor="date">Preferred date</Label>
+                    <Input
+                      type="date"
+                      id="date"
+                      name="date"
+                      className="scheme-dark w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-60 [&::-webkit-calendar-picker-indicator]:hover:opacity-100 "
+                    />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="guests" className="font-mono text-[10px] uppercase tracking-widest text-fog">
-                      Number of guests
-                    </label>
-                    <input type="number" id="guests" name="guests" min={1} max={600} placeholder="e.g. 120" className={field} />
+                  <div className="flex min-w-0 flex-col gap-2">
+                    <Label htmlFor="guests">Number of guests</Label>
+                    <Input
+                      type="number"
+                      id="guests"
+                      name="guests"
+                      min={1}
+                      max={600}
+                      placeholder="e.g. 120"
+                    />
                   </div>
                 </div>
 
+                <Separator />
+
                 {/* Message */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-widest text-fog">
-                    Tell us about your event
-                  </label>
-                  <textarea
-                    id="message" name="message" rows={4}
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="message">Tell us about your event</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={4}
                     placeholder="Theme, catering preferences, departure pier, special requests…"
-                    className={`${field} resize-none`}
                   />
                 </div>
 
@@ -254,7 +281,7 @@ export function EnquireCta() {
                   </p>
                 )}
 
-                {/* Submit — magnetic + sweep */}
+                {/* Submit */}
                 <motion.button
                   type="submit"
                   disabled={status === "submitting"}

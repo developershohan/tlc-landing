@@ -4,10 +4,10 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function ContainerScrollSection() {
   return (
-    <section className="bg-ink overflow-hidden">
+    <div className="flex flex-col bg-ink">
       <ContainerScroll
         titleComponent={
-          <div className="-mb-6">
+          <>
             <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft mb-4">
               Step aboard
             </p>
@@ -17,7 +17,7 @@ export function ContainerScrollSection() {
             <p className="mt-4 text-lg text-ivory/60 max-w-xl mx-auto">
               Three beautifully appointed vessels. One river. Every occasion.
             </p>
-          </div>
+          </>
         }
       >
         <img
@@ -27,6 +27,6 @@ export function ContainerScrollSection() {
           draggable={false}
         />
       </ContainerScroll>
-    </section>
+    </div>
   );
 }

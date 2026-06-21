@@ -4,22 +4,25 @@ import { motion } from "framer-motion";
 import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
 const OCCASIONS = [
-  { title: "Thames Parties",        desc: "Birthdays, anniversaries and private celebrations on the water." },
-  { title: "Party Nights",          desc: "Lively evening charters with DJs, dancing and a riverside skyline." },
-  { title: "Finishing Touches",     desc: "Florals, lighting and entertainment to make the evening yours." },
-  { title: "Bring It To Life",      desc: "Live music, singers and photo booths to set the mood." },
-  { title: "Corporate Celebration", desc: "Launches, away-days and client events with a backdrop nobody forgets." },
+  { title: "Thames Parties",              desc: "Birthdays, anniversaries and private celebrations on the water." },
+  { title: "Weddings",                    desc: "Exchange vows and celebrate aboard a beautifully appointed vessel on the Thames." },
+  { title: "Corporate Events",            desc: "Launches, away-days and client events with a backdrop nobody forgets." },
+  { title: "Private Dining & Celebrations", desc: "Intimate suppers and milestone celebrations served by our expert crew." },
+  { title: "Christmas Parties",           desc: "Festive charters beneath London's glittering winter skyline — mulled wine included." },
 ];
 
 export function Occasions() {
   return (
-    <section id="occasions" className="relative overflow-hidden bg-navy px-6 py-28">
+    <section id="occasions" className="relative overflow-hidden bg-navy px-6 py-24">
       <SectionSpotlight />
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">Occasions</p>
+        <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">For every celebration</p>
         <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,3.4vw,2.9rem)] font-medium text-ivory text-balance">
-          Elevate your corporate event, or simply celebrate &mdash; the Thames makes the perfect backdrop
+          Occasions on the Water
         </h2>
+        <p className="mt-3 max-w-xl text-fog">
+          Whatever the moment, the Thames provides an unforgettable backdrop. Choose your occasion.
+        </p>
 
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-brass/15 bg-brass/10 sm:grid-cols-2 lg:grid-cols-3">
           {OCCASIONS.map((o, i) => (
@@ -35,7 +38,7 @@ export function Occasions() {
               {/* Large index number — barely visible, brightens on hover */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute right-5 top-3 select-none font-display text-[4.5rem] leading-none text-brass/5 transition-colors duration-300 group-hover:text-brass/14"
+                className="pointer-events-none absolute right-5 bottom-3 select-none font-display text-[4.5rem] leading-none text-brass/5 transition-colors duration-300 group-hover:text-brass/14"
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -46,7 +49,7 @@ export function Occasions() {
                 </h3>
                 {/* Underline that draws in left → right on hover */}
                 <div className="mt-1.5 h-px w-0 bg-brass/50 transition-[width] duration-400 ease-out group-hover:w-full" />
-                <p className="mt-3 text-sm leading-relaxed text-fog">{o.desc}</p>
+                <p className="mt-3 text-base leading-relaxed text-fog">{o.desc}</p>
               </div>
 
               <a

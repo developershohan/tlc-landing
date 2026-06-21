@@ -3,35 +3,95 @@
 import { motion } from "framer-motion";
 import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
+const STATS = [
+  { figure: "33",   label: "Years on the Thames" },
+  { figure: "3",    label: "Signature Vessels" },
+  { figure: "620",  label: "Guests at Capacity" },
+  { figure: "432",  label: "Fine-dining Covers" },
+  { figure: "No.1", label: "Choice for private Thames charters" },
+];
+
 export function Heritage() {
   return (
     <section className="relative overflow-hidden bg-navy px-6 py-24">
       <SectionSpotlight />
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-[200px_1fr]">
+
+      <div className="relative z-10 mx-auto max-w-6xl space-y-16">
+
+        {/* Stats row */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col"
+          className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
         >
-          <span className="font-display text-6xl text-brass">32+</span>
-          <span className="mt-1 font-mono text-xs uppercase tracking-widest text-fog">
-            years on the Thames
-          </span>
+          {STATS.map((s) => (
+            <motion.div
+              key={s.label}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="flex flex-col"
+            >
+              <span className="font-display text-4xl text-brass">{s.figure}</span>
+              <span className="mt-1 text-xs uppercase tracking-widest text-fog font-mono">
+                {s.label}
+              </span>
+            </motion.div>
+          ))}
         </motion.div>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="max-w-2xl text-balance font-display text-xl leading-relaxed text-ivory md:text-2xl"
-        >
-          Thames Luxury Charters has owned and operated a fleet of private
-          charter vessels in London since 1993, presenting unique venues for
-          hire that suit personal and corporate events alike &mdash; each
-          one a quiet sanctuary away from the city, with London&rsquo;s
-          skyline drifting past the window.
-        </motion.p>
+
+        {/* Copy */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[180px_1fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">
+              A London tradition
+            </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="space-y-5"
+          >
+            <h2 className="font-display text-xl leading-relaxed text-ivory md:text-2xl text-balance">
+              Book your event on a luxury charter boat on the Thames
+            </h2>
+            <p className="max-w-2xl text-base text-fog leading-relaxed">
+              Thames Luxury Charters owns and operates a celebrated fleet of exquisite private
+              event vessels in London, presenting a selection of unique venues for the perfect
+              occasion — be it personal or corporate.
+            </p>
+            <p className="max-w-2xl text-base text-fog leading-relaxed">
+              Step aboard our fleet of beautifully appointed boats and instantly discover a
+              quiet sanctuary in central London, away from the hustle and bustle of the city.
+              Glide past Tower Bridge, the Houses of Parliament and the illuminated skyline,
+              all while the river&rsquo;s smooth surface carries the evening effortlessly along.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#enquire"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brass px-7 py-3 text-sm font-semibold text-ink"
+              >
+                <span aria-hidden className="absolute inset-0 translate-x-[-105%] bg-brass-soft transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0" />
+                <span className="relative z-10">Enquire Now</span>
+              </a>
+              <a
+                href="#fleet"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-brass/40 px-7 py-3 text-sm font-medium"
+              >
+                <span aria-hidden className="absolute inset-0 translate-x-[-105%] bg-brass/10 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0" />
+                <span className="relative z-10 text-ivory transition-colors group-hover:text-brass-soft">Choose your vessel</span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
       </div>
     </section>
   );

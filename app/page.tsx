@@ -1,3 +1,4 @@
+import { AnnouncementBar } from "@/components/nav/announcement-bar";
 import { CursorDot } from "@/components/cursor/cursor-dot";
 import { FloatingNav } from "@/components/nav/floating-nav";
 import { TideProgress } from "@/components/scroll-progress";
@@ -10,14 +11,17 @@ import { Features } from "@/components/sections/features";
 import { FleetGallery } from "@/components/sections/fleet-gallery";
 import { Occasions } from "@/components/sections/occasions";
 import { WinterSale } from "@/components/sections/winter-sale";
+import { Reviews } from "@/components/sections/reviews";
 import { SocialMarquee } from "@/components/sections/social-marquee";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { EnquireCta } from "@/components/sections/enquire-cta";
 import { Footer } from "@/components/footer/footer";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 export default function Home() {
   return (
     <>
+      <AnnouncementBar />
       <CursorDot />
       <TideProgress />
       <FloatingNav />
@@ -26,16 +30,18 @@ export default function Home() {
         <ClipReveal />
         <Heritage />
         <ContainerScrollSection />
-        <ExperienceSpread />
         <Features />
+        <ExperienceSpread />
         <FleetGallery />
         <Occasions />
         <WinterSale />
+        <Reviews />
         <SocialMarquee />
         <CtaBanner />
         <EnquireCta />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
