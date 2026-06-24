@@ -49,6 +49,12 @@ export function SocialMarquee() {
 
   return (
     <section className="relative overflow-hidden bg-ink py-24">
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ AI Content — heading &amp; watermark text need real copy
+        </span>
+      </div>
 
       {/* Top gradient edge — premium section-entry fade */}
       <div className="pointer-events-none absolute top-0 inset-x-0 h-36 z-20 bg-linear-to-b from-ink via-ink/70 to-transparent" />

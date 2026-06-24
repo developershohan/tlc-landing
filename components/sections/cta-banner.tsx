@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { PhoneCall } from "lucide-react";
 import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
-const WORDS = "Begin your journey on the Thames".split(" ");
+const WORDS = "Let's start planning your perfect event".split(" ");
 
 export function CtaBanner() {
   return (
@@ -12,6 +12,12 @@ export function CtaBanner() {
       <SectionSpotlight />
       <div className="mx-auto max-w-3xl text-center">
 
+        {/* ponytail: ai-content marker — remove before launch */}
+        <div aria-hidden className="pointer-events-none mb-4 flex justify-center">
+          <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+            ⚠ Description paragraph below is AI — replace with real content
+          </span>
+        </div>
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}

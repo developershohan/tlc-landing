@@ -48,7 +48,13 @@ export function WinterSale() {
       <div className="relative mx-auto max-w-6xl space-y-20">
 
         {/* ── Christmas section ── */}
-        <div>
+        <div className="relative">
+          {/* ponytail: ai-content marker — remove before launch */}
+          <div aria-hidden className="pointer-events-none absolute right-0 top-0 z-50">
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+              ⚠ AI Content — Christmas section needs real copy
+            </span>
+          </div>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}

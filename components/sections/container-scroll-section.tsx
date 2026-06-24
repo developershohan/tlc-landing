@@ -4,7 +4,13 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function ContainerScrollSection() {
   return (
-    <div className="flex flex-col bg-ink">
+    <div className="relative flex flex-col bg-ink">
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ AI Content — replace heading &amp; subtitle
+        </span>
+      </div>
       <ContainerScroll
         titleComponent={
           <>

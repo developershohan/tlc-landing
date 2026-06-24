@@ -4,24 +4,30 @@ import { motion } from "framer-motion";
 import { SectionSpotlight } from "@/components/effects/section-spotlight";
 
 const OCCASIONS = [
-  { title: "Thames Parties",              desc: "Birthdays, anniversaries and private celebrations on the water." },
-  { title: "Weddings",                    desc: "Exchange vows and celebrate aboard a beautifully appointed vessel on the Thames." },
-  { title: "Corporate Events",            desc: "Launches, away-days and client events with a backdrop nobody forgets." },
-  { title: "Private Dining & Celebrations", desc: "Intimate suppers and milestone celebrations served by our expert crew." },
-  { title: "Christmas Parties",           desc: "Festive charters beneath London's glittering winter skyline — mulled wine included." },
+  { title: "Thames Parties",     desc: "⚠ Add real description — link to party planning page." },
+  { title: "Party Nights",       desc: "⚠ Add real description — link to party nights page." },
+  { title: "Finishing Touches",  desc: "⚠ Add real description — entertainment & upgrade options." },
+  { title: "Bring It To Life",   desc: "⚠ Add real description — corporate events page." },
+  { title: "Corporate Celebration", desc: "⚠ Add real description — corporate celebration details." },
 ];
 
 export function Occasions() {
   return (
     <section id="occasions" className="relative overflow-hidden bg-navy px-6 py-24">
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ Occasion descriptions need real content
+        </span>
+      </div>
       <SectionSpotlight />
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">For every celebration</p>
         <h2 className="mt-4 max-w-2xl font-display text-[clamp(1.9rem,3.4vw,2.9rem)] font-medium text-ivory text-balance">
-          Occasions on the Water
+          The No.1 choice for private event charters on the River Thames for any occasion since 1993
         </h2>
         <p className="mt-3 max-w-xl text-fog">
-          Whatever the moment, the Thames provides an unforgettable backdrop. Choose your occasion.
+          Elevate your corporate event by booking a party on the Thames, the perfect backdrop for an unforgettable gathering.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-brass/15 bg-brass/10 sm:grid-cols-2 lg:grid-cols-3">

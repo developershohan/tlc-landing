@@ -63,15 +63,17 @@ export function Heritage() {
               Book your event on a luxury charter boat on the Thames
             </h2>
             <p className="max-w-2xl text-base text-fog leading-relaxed">
-              Thames Luxury Charters owns and operates a celebrated fleet of exquisite private
-              event vessels in London, presenting a selection of unique venues for the perfect
-              occasion — be it personal or corporate.
+              Thames Luxury Charters own and operate a varied fleet of exquisite private charter
+              vessels in London, presenting a selection of unique venues for hire that are perfect
+              for both personal and corporate events.
             </p>
             <p className="max-w-2xl text-base text-fog leading-relaxed">
-              Step aboard our fleet of beautifully appointed boats and instantly discover a
-              quiet sanctuary in central London, away from the hustle and bustle of the city.
-              Glide past Tower Bridge, the Houses of Parliament and the illuminated skyline,
-              all while the river&rsquo;s smooth surface carries the evening effortlessly along.
+              Step aboard our fleet of beautifully appointed boats and instantly discover a quiet
+              sanctuary in central London, away from the hustle and bustle of city life. Enjoy a
+              blend of delicate flavours from FoodbyDish, with carefully matched fine wines that
+              are sure to impress your guests while sailing along the River Thames. Admire
+              London&rsquo;s breathtaking skyline and world famous landmarks, while at night the
+              illuminations project enchanting reflections across the river&rsquo;s smooth surface.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a

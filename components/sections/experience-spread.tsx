@@ -6,7 +6,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 /* ─── Mobile: pure CSS 1-column grid, no JS ─────────────────────────── */
 function MobileLayout() {
   return (
-    <div className="bg-ink px-5 py-20 sm:hidden">
+    <div className="relative bg-ink px-5 py-20 sm:hidden">
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ AI Content
+        </span>
+      </div>
       <div className="mb-10 text-center">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-brass-soft">
           &mdash; the experience &mdash;
@@ -77,6 +83,12 @@ function DesktopLayout() {
       style={{ height: "calc(1800px + 100vh)" }}
       className="relative hidden bg-ink sm:block"
     >
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ AI Content — heading &amp; caption need real copy
+        </span>
+      </div>
       <div className="sticky top-10 h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* Headline */}
         <motion.div

@@ -18,6 +18,12 @@ const FEATURES = [
 export function Features() {
   return (
     <section className="relative overflow-hidden bg-navy px-6 py-24">
+      {/* ponytail: ai-content marker — remove before launch */}
+      <div aria-hidden className="pointer-events-none absolute right-4 top-3 z-50">
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">
+          ⚠ AI Content — feature descriptions need real copy
+        </span>
+      </div>
       <SectionSpotlight />
       <div className="absolute right-[-10%] top-1/2 hidden w-[55%] -translate-y-1/2 text-ink/40 lg:block" aria-hidden>
         <svg viewBox="0 0 600 200" fill="currentColor" className="w-full">
